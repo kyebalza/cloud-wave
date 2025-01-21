@@ -1,0 +1,13 @@
+while true; do
+  PGPASSWORD="qwer1234" psql -h lab-edu-rds-aurora.cluster-ro-cvaao02o0frp.ap-northeast-2.rds.amazonaws.com \
+      -U user \
+      -d trip_advisor \
+      -c "select * from attractions;";
+  sleep 1;
+done
+
+#1초에 1번 씩 ip값 가져오는 것
+while true; do 
+  nslookup lab-edu-rds-aurora.cluster-ro-cvaao02o0frp.ap-northeast-2.rds.amazonaws.com | grep -E "Address: 10\." | awk '{print $2}';
+  sleep 1; 
+done
